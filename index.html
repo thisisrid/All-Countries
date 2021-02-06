@@ -5,86 +5,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>All Countries</title>
-    <style>
-        * {
-            margin: auto;
-            padding: 0;
-        }
-
-        .country {
-            margin: 0 auto;
-            width: 70%;
-            padding: 20px;
-            background-color: rgb(2, 77, 52);
-            color: rgb(255, 255, 255);
-            text-align: center;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-gap: 10px;
-        }
-
-        .infoClass {
-            border: black 2px solid;
-            border-radius: 20px;
-            padding: 10px;
-            width: 300px;
-            height: 150px;
-            display: grid;
-            justify-content: center;
-        }
-        #viewInfo {
-text-align: center;
-display: none;
-            justify-content: center;
-            padding-top: 100px;
-        }
-        #viewInfo img {
-width: 20%;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <div id="viewInfo"></div>
     <div id="countries" class="country"></div>
 
-    <script>
-        fetch("https://restcountries.eu/rest/v2/all")
-            .then((response) => response.json())
-            .then((data) => country(data));
-        const div = document.getElementById("countries");
-        function country(info) {
-            info.forEach((obj) => {
-                const newdiv = document.createElement("div");
-                newdiv.className = "infoClass";
-                const countryInfo = `<h1> ${obj.name} </h1>
-                <h3> ${obj.capital} </h3>
-                <button onclick="getDetails('${obj.name}')"> DETAILS </button>`;
-                newdiv.innerHTML = countryInfo;
-                div.appendChild(newdiv);
-            });
-}
-
-const getDetails = name => {
-    fetch(`https://restcountries.eu/rest/v2/name/${name}`)
-    .then(res=> res.json())
-    .then(data => setInfo(data));
-    document.getElementById('countries').style.display = 'none';
-    document.getElementById('viewInfo').style.display = 'block';
-}
-
-const setInfo = info => {
-const inf = document.getElementById('viewInfo');
-inf.innerHTML = `<h4>${info[0].name}</h4>
-<p>Region : ${info[0].region} </p>
-<p>Population: ${info[0].population} </p>
-<p>Area: ${info[0].area} </p>
-<img src='${info[0].flag}'></img><br>
-<button onclick="location.reload()">Go-Back</button>`
-
-}
-
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>
