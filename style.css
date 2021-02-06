@@ -33,3 +33,13 @@ display: none;
 #viewInfo img {
 width: 20%;
 }
+@media screen and (max-width: 800px){
+.country {
+    margin: 0 auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(1, 2fr);
+    grid-gap: 10px;
+}
+
+}
